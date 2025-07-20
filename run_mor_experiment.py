@@ -50,8 +50,9 @@ def run_quick_demo():
     from transformers import AutoTokenizer
     
     # Create small model for demo
+    tokenizer = AutoTokenizer.from_pretrained('gpt2')
     config = MoRConfig(
-        vocab_size=1000,
+        vocab_size=tokenizer.vocab_size,
         hidden_size=256,
         num_attention_heads=8,
         num_hidden_layers=4,
@@ -60,7 +61,6 @@ def run_quick_demo():
     )
     
     model = MixtureOfRecursions(config)
-    tokenizer = AutoTokenizer.from_pretrained('gpt2')
     
     # Test input
     test_text = "The quick brown fox jumps over the lazy dog."

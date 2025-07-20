@@ -312,6 +312,9 @@ class MixtureOfRecursions(nn.Module):
         depth_attention = depth_mask.unsqueeze(1) * depth_mask.unsqueeze(2)
         attention_mask = attention_mask * depth_attention
         
+        # Expand for multi-head attention: [B, H, L, L]
+        attention_mask = attention_mask.unsqueeze(1).expand(batch_size, self.config.num_attention_heads, seq_len, seq_len)
+        
         return attention_mask
     
     def _compute_router_loss(self, router_logits: torch.Tensor, recursion_depths: torch.Tensor) -> torch.Tensor:
