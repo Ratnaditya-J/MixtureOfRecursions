@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  mor-research:
+    build: .
+    container_name: mor-research
+    volumes:
+      - .:/app
+      - ./data:/app/data
+      - ./results:/app/results
+    environment:
+      - PYTHONPATH=/app
+      - WANDB_MODE=offline  # Set to online if you want W&B logging
+    ports:
+      - "8888:8888"  # Jupyter
+      - "6006:6006"  # TensorBoard
+    command: bash -c "pip install -e . && jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root"
+
+  mor-demo:
+    build: .
+    container_name: mor-demo
+    volumes:
+      - .:/app
+    command: python simple_mor_demo.py
+
+  mor-train:
+    build: .
+    container_name: mor-train
+    volumes:
+      - .:/app
+      - ./data:/app/data
+      - ./results:/app/results
+    environment:
+      - PYTHONPATH=/app
+    command: python run_mor_experiment.py train --model_size small
+
+  mor-evaluate:
+    build: .
+    container_name: mor-evaluate
+    volumes:
+      - .:/app
+      - ./results:/app/results
+    environment:
+      - PYTHONPATH=/app
+    command: python run_mor_experiment.py evaluate

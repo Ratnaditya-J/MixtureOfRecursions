@@ -1,0 +1,30 @@
+# Manifest file for package distribution
+include README.md
+include LICENSE
+include CHANGELOG.md
+include CONTRIBUTING.md
+include requirements.txt
+include pyproject.toml
+include .pre-commit-config.yaml
+
+# Include configuration files
+recursive-include configs *.yaml *.yml *.json
+recursive-include data *.txt *.json *.yaml
+
+# Include documentation
+recursive-include docs *.md *.rst *.txt
+
+# Include tests
+recursive-include tests *.py
+
+# Include notebooks
+recursive-include notebooks *.ipynb
+
+# Exclude development files
+exclude .gitignore
+exclude .env*
+exclude docker-compose.yml
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+recursive-exclude * *.so
+recursive-exclude * .DS_Store

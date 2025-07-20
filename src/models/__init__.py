@@ -2,4 +2,4 @@
 
 from .mor_model import MixtureOfRecursions, MoRConfig
 
-__all__ = ['MixtureOfRecursions', 'MoRConfig']
+__all__ = ["MixtureOfRecursions", "MoRConfig"]

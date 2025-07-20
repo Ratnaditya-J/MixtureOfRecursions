@@ -49,6 +49,71 @@ models/trained/
 # Results and logs
 results/
 logs/
+runs/
+outputs/
+wandb/
+*.log
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+
+# Documentation
+docs/_build/
+docs/build/
+site/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# MoR-specific
+# Allow small demo models but ignore large trained models
+!models/demo/
+models/large/
+models/production/
+
+# Experiment outputs
+experiments/outputs/
+checkpoints/
+*.tensorboard
+
+# Docker
+.dockerignore
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Backup files
+*.bak
+*.backup
+*.orig
+logs/
 *.log
 
 # IDE
