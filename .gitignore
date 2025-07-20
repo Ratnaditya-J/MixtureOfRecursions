@@ -39,11 +39,12 @@ data/processed/
 *.pkl
 *.h5
 
-# Model files
-models/
+# Trained model files (but allow source code)
+models/trained/
 *.pth
 *.bin
 *.safetensors
+*.ckpt
 
 # Results and logs
 results/
